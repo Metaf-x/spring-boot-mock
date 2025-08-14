@@ -1,0 +1,6 @@
+{
+  "name": "%s",
+  "surname": "%s",
+  "age": %d,
+  "ello": "ello"
+}
