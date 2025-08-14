@@ -1,5 +1,7 @@
 package org.spring.mock.Controller;
 
+import org.spring.mock.Model.Person;
+import org.spring.mock.Model.Student;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,5 +16,13 @@ public class MainController {
     public String postMapping(@RequestBody String body) {
         System.out.println(body);
         return "Post Mapping";
+    }
+
+    @PostMapping("/postPerson")
+    public Student changePerson(@RequestBody Person person) {
+        Student student = new Student();
+        student.setFullname(person.getName() + " " + person.getSurname());
+        student.setYearGraduated(person.getAge() + 21);
+        return student;
     }
 }
