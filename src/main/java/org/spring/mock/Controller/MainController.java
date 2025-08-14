@@ -1,8 +1,6 @@
 package org.spring.mock.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1")
@@ -12,4 +10,9 @@ public class MainController {
         return "get mapping - Hello";
     }
 
+    @PostMapping("/postMapping")
+    public String postMapping(@RequestBody String body) {
+        System.out.println(body);
+        return "Post Mapping";
+    }
 }
