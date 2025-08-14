@@ -1,7 +1,10 @@
 package org.spring.mock.Controller;
 
+import org.apache.catalina.loader.ResourceEntry;
 import org.spring.mock.Model.Person;
 import org.spring.mock.Model.Student;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -43,5 +46,15 @@ public class MainController {
     @GetMapping("/getWithId/{pathVariable}/getUser")
     public String answerWithId(@PathVariable("pathVariable") String pathVar) {
         return pathVar;
+    }
+
+    @GetMapping("/getMappingReturnOk")
+    public ResponseEntity<Student> answerOk() {
+        return ResponseEntity.ok(new Student());
+    }
+
+    @GetMapping("/getMappingStatus")
+    public ResponseEntity<String> answerStatus() {
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("Server is not OK");
     }
 }
