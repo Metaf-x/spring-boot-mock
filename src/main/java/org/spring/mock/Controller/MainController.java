@@ -25,4 +25,23 @@ public class MainController {
         student.setYearGraduated(person.getAge() + 21);
         return student;
     }
+
+    @GetMapping("/getWithParams")
+    public String answer(@RequestParam("name")String name, @RequestParam("surname") String surname) {
+        return name + " " + surname;
+    }
+
+    @GetMapping("/getWithAuth")
+    public String answerWithAuth(
+            @RequestParam("name")String name,
+            @RequestParam("surname") String surname,
+            @RequestHeader("Authorization")String jwt
+    ) {
+        return jwt;
+    }
+
+    @GetMapping("/getWithId/{pathVariable}/getUser")
+    public String answerWithId(@PathVariable("pathVariable") String pathVar) {
+        return pathVar;
+    }
 }
